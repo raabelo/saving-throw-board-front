@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+#root {
+    height: 100svh;
+    width: 100svw;
+    overflow: hidden;
+}
+
+* {
+    font-family: "Century Gothic", "Courier New", Courier, monospace;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#toolbar {
+    -webkit-app-region: drag;
+}
+
+a {
+    cursor: pointer;
+}
