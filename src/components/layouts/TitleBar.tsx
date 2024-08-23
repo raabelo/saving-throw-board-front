@@ -1,46 +1,54 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import Electron from "../../services/electronApi";
 import { MinusIcon, StopIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import ButtonTitleBar from "../ui/ButtonTitleBar";
+import LogoWhite from "../../assets/logos/text-white-saving-throw.png";
+
+type IButton = { title: string; icon: ReactElement; action: () => void; className?: string };
 
 const TitleBar: React.FC = () => {
-    const handleMinimize = () => {
-        Electron.api.Minimize();
-    };
-
-    const handleMaximize = () => {
-        Electron.api.Maximize();
-    };
-
-    const handleClose = () => {
-        Electron.api.Close();
-    };
+    const buttons: IButton[] = [
+        {
+            title: "Minimize",
+            icon: <MinusIcon className="size-4" />,
+            action: () => {
+                Electron.api.Minimize();
+            },
+        },
+        {
+            title: "Maximize",
+            icon: <StopIcon className="size-4" />,
+            action: () => {
+                Electron.api.Maximize();
+            },
+        },
+        {
+            title: "Close",
+            icon: <XMarkIcon className="size-4" />,
+            action: () => {
+                Electron.api.Close();
+            },
+            className: "hover:bg-red-600",
+        },
+    ];
 
     if (!Electron.isElectron) {
         return <React.Fragment />;
     }
 
     return (
-        <div className="flex flex-row w-full h-fit bg-gray-500">
-            <div id="toolbar" className="flex-1 w-full p-1" />
+        <div className="flex flex-row w-full h-fit bg-gray-950">
+            <div id="toolbar" className="flex-1 w-full p-1">
+                <img src={LogoWhite} className="h-5 object-cover w-auto ml-1" />
+            </div>
             <div id="toolbar-buttons" className="flex flex-row gap-1">
-                <button
-                    onClick={handleMinimize}
-                    className="py-1.5 px-2 hover:bg-gray-700 transition-all focus:outline-none"
-                >
-                    <MinusIcon className="size-4" />
-                </button>
-                <button
-                    onClick={handleMaximize}
-                    className="py-1.5 px-2 hover:bg-gray-700 transition-all focus:outline-none"
-                >
-                    <StopIcon className="size-4" />
-                </button>
-                <button
-                    onClick={handleClose}
-                    className="py-1.5 px-2 hover:bg-red-600 transition-all focus:outline-none"
-                >
-                    <XMarkIcon className="size-4" />
-                </button>
+                {buttons.map((item) => {
+                    return (
+                        <ButtonTitleBar className={item.className} onClick={item.action}>
+                            {item.icon}
+                        </ButtonTitleBar>
+                    );
+                })}
             </div>
         </div>
     );

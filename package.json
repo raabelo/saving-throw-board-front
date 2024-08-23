@@ -4,6 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "main": "./electron/index.js",
+    "build": "",
     "scripts": {
         "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
         "dev:vite": "tsc && vite",
@@ -16,16 +17,28 @@
         "type-check": "tsc"
     },
     "dependencies": {
+        "@emotion/react": "^11.13.0",
+        "@emotion/styled": "^11.13.0",
+        "@fortawesome/fontawesome-svg-core": "^6.6.0",
+        "@fortawesome/react-fontawesome": "^0.2.2",
         "@heroicons/react": "^2.1.5",
+        "@mui/material": "^5.16.7",
+        "@react-three/drei": "^9.109.5",
+        "@react-three/fiber": "^8.16.8",
         "electron": "^31.3.1",
         "electron-is-dev": "^3.0.1",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "react-router-dom": "^6.26.0"
+        "react-icons": "^5.3.0",
+        "react-router-dom": "^6.26.0",
+        "react-use": "^17.5.1",
+        "three": "^0.167.1",
+        "three-stdlib": "^2.32.1"
     },
     "devDependencies": {
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
+        "@types/three": "^0.167.1",
         "@typescript-eslint/eslint-plugin": "^7.15.0",
         "@typescript-eslint/parser": "^7.15.0",
         "@vitejs/plugin-react": "^4.3.1",
@@ -36,7 +49,7 @@
         "eslint-plugin-react-refresh": "^0.4.7",
         "postcss": "^8.4.41",
         "tailwindcss": "^3.4.7",
-        "typescript": "^5.2.2",
+        "typescript": "^5.5.4",
         "vite": "^5.3.4",
         "vite-plugin-mkcert": "^1.17.5"
     }
