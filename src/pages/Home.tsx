@@ -4,7 +4,7 @@ const Home: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="size-full bg-blue-400">
+        <div className="size-full">
             <p>home</p>
             <a onClick={() => navigate("/login")}>navigate</a>
         </div>
